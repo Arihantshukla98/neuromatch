@@ -1,6 +1,8 @@
-# PokéMatch
+# Neuromatch
 
 A premium, interactive Pokémon memory matching game built with React and Vite.
+
+🎯 **[Play the Live Demo Here!](https://Arihantshukla98.github.io/neuromatch/)**
 
 ## Features
 - **Modern UI**: Smooth animations, glassmorphism, and a high-end indigo dark theme using Tailwind CSS v4.
@@ -17,8 +19,8 @@ A premium, interactive Pokémon memory matching game built with React and Vite.
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd pokematch
+   git clone https://github.com/Arihantshukla98/neuromatch.git
+   cd neuromatch
    ```
 
 2. **Install dependencies**
