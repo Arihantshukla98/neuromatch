@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6366f1; /* Indigo 500 */
+  --color-secondary: #3b82f6; /* Blue 500 */
+  --color-accent: #eab308; /* Yellow 500 */
+  --color-dark: #0f172a; /* Slate 900 */
+  --color-surface: #1e293b; /* Slate 800 */
+  --color-light: #f8fafc; /* Slate 50 */
+  --color-success: #10b981; /* Emerald 500 */
+  --font-sans: "Outfit", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-dark text-slate-200 font-sans min-h-screen overflow-x-hidden relative flex justify-center items-center m-0;
+    /* Sophisticated, subtle mesh gradient background */
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(15, 23, 42, 1) 0px, transparent 50%);
+    background-color: #0f172a;
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  /* Refined Glassmorphism - Premium feel */
+  .glass-card {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* Polished Buttons */
+  .primary-btn {
+    background: linear-gradient(to bottom, #6366f1, #4f46e5);
+    @apply text-white border-none rounded-xl font-medium tracking-wide flex items-center justify-center gap-2 w-full transition-all duration-200;
+    box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .primary-btn:hover {
+    background: linear-gradient(to bottom, #818cf8, #6366f1);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    @apply -translate-y-0.5;
+  }
+
+  .primary-btn:active {
+    background: #4338ca;
+    box-shadow: 0 1px 4px rgba(99, 102, 241, 0.5);
+    @apply translate-y-0 transition-none;
+  }
+
+  .secondary-btn {
+    background: rgba(51, 65, 85, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    @apply text-slate-300 rounded-xl font-medium tracking-wide transition-all duration-200;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .secondary-btn:hover {
+    background: rgba(71, 85, 105, 0.8);
+    @apply text-white border-slate-500;
+  }
+}
+
+@layer utilities {
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+/* Card Flip Mechanics */
+.card-inner {
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner,
+.card.matched .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Card states */
+.card.matched .card-inner .card-back {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.8), inset 0 0 20px rgba(16, 185, 129, 0.15);
+  border-color: transparent;
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+}
+
+.card.matched .card-inner {
+  animation: matchPulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes matchPulse {
+  0% { transform: rotateY(180deg) scale(1); }
+  50% { transform: rotateY(180deg) scale(1.08); }
+  100% { transform: rotateY(180deg) scale(1); }
+}
+
+.card-front,
+.card-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
